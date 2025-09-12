@@ -1,0 +1,6 @@
+@echo off
+echo Starting Django development server...
+start "Django Server" cmd /k "python manage.py runserver"
+
+echo Opening git bash...
+start "Git Bash" "C:\Program Files\Git\git-bash.exe"

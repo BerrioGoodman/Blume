@@ -1,0 +1,71 @@
+# --- Environment Variables ---
+# Never commit secrets, API keys, or database credentials to your repository.
+.env
+.env.*
+local_settings.py
+
+
+# --- Local Databases ---
+# Ignore the local development database file.
+db.sqlite3
+db.sqlite3-journal
+
+# Ignore database dumps which can be large and may contain sensitive data.
+*.sql
+*.dump
+
+
+# --- Django Specific ---
+# Ignore user-uploaded media files.
+media/
+
+# Ignore collected static files for production (these are generated).
+staticfiles/
+static_root/
+
+
+# --- Python Specific ---
+# Virtual Environment folders.
+venv/
+env/
+.venv/
+.env/
+
+# Python cache files.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Package distribution and installation files.
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+
+
+# --- Development Tools & Editors ---
+# IDE configuration folders.
+.idea/          # PyCharm
+.vscode/        # Visual Studio Code
+*.sublime-* # Sublime Text
+
+# Testing and code coverage reports.
+.pytest_cache/
+.tox/
+htmlcov/
+.coverage
+
+
+# --- Operating System Files ---
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+
+# --- Log Files ---
+*.log
