@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'apps.students',
+    'apps.companies',
+    'apps.vacancies',
+    'apps.application_jobs'
 ]
 
 MIDDLEWARE = [
