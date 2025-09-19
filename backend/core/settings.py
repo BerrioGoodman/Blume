@@ -46,7 +46,13 @@ INSTALLED_APPS = [
     'apps.students',
     'apps.companies',
     'apps.vacancies',
-    'apps.application_jobs'
+    'apps.application_jobs',
+    'apps.administrator',
+    'apps.notification',
+    'apps.stats',
+    'apps.teacher',
+    'apps.evidence',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -62,20 +68,27 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     #las configuraciones por defecto de rest framework
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny'
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication',],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', 
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000"
 ]
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Blume API',
+    'DESCRIPTION': 'API para la gestion de estudiantes, empresas, vacantes y postulaciones.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 ROOT_URLCONF = 'core.urls'
 
