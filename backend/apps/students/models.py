@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class EstudianteModel(models.Model): 
+class EstudianteModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="estudiantes")
     carrera = models.CharField(max_length=200)
     semestre = models.IntegerField(default=1)

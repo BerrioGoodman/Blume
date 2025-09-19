@@ -2,8 +2,18 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import EstudianteRegistroSerializer
+from drf_spectacular.utils import extend_schema
+from rest_framework.permissions import AllowAny
 
 class RegistrarEstudianteAPI(APIView):
+    Permission_classes = [AllowAny]
+
+    @extend_schema(
+        request = EstudianteRegistroSerializer,
+        responses={"201": EstudianteRegistroSerializer},
+        auth=[]
+    )
+
     def post(self, request):
         serializer = EstudianteRegistroSerializer(data=request.data)
         if serializer.is_valid():
