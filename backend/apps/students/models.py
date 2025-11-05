@@ -1,13 +1,13 @@
 from django.db import models
-import uuid
+from django.contrib.auth.models import User
 
-class EstudianteModel(models.Model): 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    nombre = models.CharField(max_length=200)
-    correo = models.EmailField(unique=True)
+class EstudianteModel(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="estudiantes")
     carrera = models.CharField(max_length=200)
-    creado_en = models.DateTimeField(auto_now_add=True)
-    actualizado_en = models.DateTimeField(auto_now=True)
+    semestre = models.IntegerField(default=1)
+
+    class Meta:
+        db_table = "estudiantes"
 
     def __str__(self):
-        return self.nombre
+        return self.user.username
