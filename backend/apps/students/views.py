@@ -6,7 +6,7 @@ from drf_spectacular.utils import extend_schema
 from rest_framework.permissions import AllowAny
 
 class RegistrarEstudianteAPI(APIView):
-    Permission_classes = [AllowAny]
+    permission_classes = [AllowAny]
 
     @extend_schema(
         request = EstudianteRegistroSerializer,
