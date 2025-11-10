@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import EstudianteModel
+from .models import AministratorModel
 
-class EstudianteRegistroSerializer(serializers.ModelSerializer):
+class AdministratorRegistroSerializer(serializers.ModelSerializer):
     username = serializers.CharField(write_only=True)
     password = serializers.CharField(write_only=True)
     email = serializers.EmailField(write_only=True)
@@ -10,8 +10,8 @@ class EstudianteRegistroSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(write_only=True)
 
     class Meta:
-        model = EstudianteModel
-        fields = ["username", "password", "email", "first_name", "last_name", "carrera", "semestre"]
+        model = AministratorModel
+        fields = ["username", "password", "email", "first_name", "last_name", "rol", "nivel_acceso"]
 
     def create(self, validated_data):
         username = validated_data.pop("username")
@@ -28,15 +28,15 @@ class EstudianteRegistroSerializer(serializers.ModelSerializer):
             last_name=last_name
         )
 
-        estudiante = EstudianteModel.objects.create(user=user, **validated_data)
-        return estudiante
+        administrator = AministratorModel.objects.create(user=user, **validated_data)
+        return administrator
 
-class EstudianteSerializer(serializers.ModelSerializer):
+class AdministratorSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
     email = serializers.EmailField(source='user.email', read_only=True)
     first_name = serializers.CharField(source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
 
     class Meta:
-        model = EstudianteModel
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'carrera', 'semestre']
+        model = AministratorModel
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'rol', 'nivel_acceso']
