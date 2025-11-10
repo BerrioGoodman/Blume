@@ -12,7 +12,7 @@ class CompanyRegistroSerializer(serializers.ModelSerializer):
     class Meta:
         model = companyModel
         fields = ["username", "password", "email", "first_name", "last_name", "nombre_empresa", "sector_industria", "direccion", "telefono"]
-    
+
     def create(self, validated_data):
         username = validated_data.pop("username")
         password = validated_data.pop("password")
@@ -30,3 +30,13 @@ class CompanyRegistroSerializer(serializers.ModelSerializer):
 
         company = companyModel.objects.create(user=user, **validated_data)
         return company
+
+class CompanySerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
+
+    class Meta:
+        model = companyModel
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'nombre_empresa', 'sector_industria', 'direccion', 'telefono']
