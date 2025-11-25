@@ -4,6 +4,5 @@ from .views import CompanyViewSet, RegistrarCompanyAPI, ApplicationManagementVie
 urlpatterns = [
     path("registro/", RegistrarCompanyAPI.as_view({'post': 'create'}), name="registrar-empresa"),
     path("perfil/", CompanyViewSet.as_view({'get': 'list', 'put': 'update', 'patch': 'partial_update'}), name="empresa-perfil"),
-    path("vacantes/", CompanyViewSet.as_view({'get': 'list', 'post': 'create'}), name="empresa-vacantes"),  # Assuming VacancyViewSet is separate, but for companies, their vacancies
     path("postulaciones/<int:pk>/actualizar-estado/", ApplicationManagementViewSet.as_view({'patch': 'update_status'}), name="empresa-actualizar-estado"),
 ]

@@ -7,6 +7,7 @@ class VacancyViewSet(viewsets.ModelViewSet):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         # Companies can see their own vacancies

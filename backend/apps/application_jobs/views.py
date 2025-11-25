@@ -7,6 +7,7 @@ class ApplicationJobViewSet(viewsets.ModelViewSet):
     queryset = ApplicationJobModel.objects.all()
     serializer_class = ApplicationJobSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         user = self.request.user

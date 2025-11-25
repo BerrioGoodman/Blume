@@ -14,6 +14,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
     queryset = companyModel.objects.all()
     serializer_class = CompanySerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None  # Disable pagination since get_queryset returns single item
 
     def get_queryset(self):
         return companyModel.objects.filter(user=self.request.user)

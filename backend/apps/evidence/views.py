@@ -7,6 +7,7 @@ class EvidenceViewSet(viewsets.ModelViewSet):
     queryset = EvidenceModel.objects.all()
     serializer_class = EvidenceSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         user = self.request.user

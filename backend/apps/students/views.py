@@ -14,6 +14,7 @@ class EstudianteViewSet(viewsets.ModelViewSet):
     queryset = EstudianteModel.objects.all()
     serializer_class = EstudianteSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None  # Disable pagination since get_queryset returns single item
 
     def get_queryset(self):
         return EstudianteModel.objects.filter(user=self.request.user)
