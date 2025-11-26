@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-vf-g512@9j#tn3z-(!95n^o#g@lz+$i$brw)sa5uugmyu)m*^=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -48,10 +48,8 @@ INSTALLED_APPS = [
     'apps.vacancies',
     'apps.application_jobs',
     'apps.administrator',
-    'apps.notification',
     'apps.stats',
     'apps.teacher',
-    'apps.evidence',
     'drf_spectacular',
 ]
 
@@ -77,7 +75,9 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:8000"
+    "http://127.0.0.1:8000",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
 ]
 
 SPECTACULAR_SETTINGS = {

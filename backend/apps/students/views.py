@@ -45,6 +45,7 @@ class VacancyListView(viewsets.ReadOnlyModelViewSet):
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
         # Students can view all vacancies
