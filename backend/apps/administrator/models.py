@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class AministratorModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rol = models.CharField(max_length=150)
-    nivel_acceso = models.TextField(blank=True, null=True)
+    nivel_acceso = models.TextField(blank=True)
 
     class Meta:
         db_table = "administrators"
